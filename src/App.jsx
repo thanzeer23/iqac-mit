@@ -16,7 +16,6 @@ import EditPage from "./admin/Dashboard/EditPage";
 import EditPageId from "./admin/Dashboard/EditPageId";
 import NotFound from "./404/NotFound";
 import RouteProtect from "./admin/Dashboard/RouteProtect";
-import Test from "./Test";
 import { LoadingProvider } from "./context/context";
 
 const App = () => {
@@ -57,7 +56,7 @@ const App = () => {
             )
           }
         />
-        <Route path="/test" element={<Test />} />
+
         {/* private route */}
         <Route
           element={

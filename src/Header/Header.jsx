@@ -67,7 +67,7 @@ const Header = ({ user }) => {
                   <Text>Autonomous Institute </Text>
                   <Text>NAAC Accreditation 'A' Grade </Text>
                   <Text>Acredited by NBA </Text>
-                  <Text>Approved by AICTE, Affiliated to JNTUH</Text>
+                  <Text>Approved by AICTE, Affiliated to JNTUH </Text>
                 </Box>
               )}
             </Flex>

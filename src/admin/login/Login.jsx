@@ -12,6 +12,7 @@ import {
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { FaEyeSlash } from "react-icons/fa";
 import logo from "../../assets/logo.png";
 import { CgLogIn } from "react-icons/cg";
 import { FaEye } from "react-icons/fa";
@@ -30,6 +31,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const [password, setPassword] = useState("");
   useEffect(() => {
@@ -170,7 +172,7 @@ const Login = () => {
                   >
                     <InputGroup display={"flex"} flexDirection={"column"}>
                       <Input
-                        type="password"
+                        type={showPassword ? "text" : "password"}
                         name="password"
                         borderColor={"#6c757d"}
                         placeholder="password"
@@ -181,7 +183,21 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                       />
                       <InputRightElement width="4.5rem">
-                        <FaEye fill="#777" style={{ marginLeft: "20px" }} />
+                        {!showPassword ? (
+                          <FaEye
+                            fill="#777"
+                            cursor={"pointer"}
+                            style={{ marginLeft: "20px" }}
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        ) : (
+                          <FaEyeSlash
+                            fill="#777"
+                            cursor={"pointer"}
+                            style={{ marginLeft: "20px" }}
+                            onClick={() => setShowPassword(!showPassword)}
+                          />
+                        )}
                       </InputRightElement>
                       <FormErrorMessage>
                         {errors?.password?.message}
