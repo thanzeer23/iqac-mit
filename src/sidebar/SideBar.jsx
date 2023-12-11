@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { db } from "../firebase/config";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 
 const SideBar = ({ user }) => {
   const [sections, setSections] = useState([]);
@@ -35,7 +35,8 @@ const SideBar = ({ user }) => {
   const fetchSections = async () => {
     try {
       const sectionDocRef = collection(db, "sections"); // Assuming 'sections' is your collection name
-      const docSnapshot = await getDocs(sectionDocRef);
+      const sectionQuery = query(sectionDocRef, orderBy("createdAt", "asc")); // Assuming 'sections' is your collection name
+      const docSnapshot = await getDocs(sectionQuery);
 
       const fetchedSections = [];
       docSnapshot.forEach((doc) => {
@@ -52,7 +53,8 @@ const SideBar = ({ user }) => {
   const getPgeDetails = async () => {
     try {
       const sectionsCollection = collection(db, "pages");
-      const querySnapshot = await getDocs(sectionsCollection);
+      const pageQuery = query(sectionsCollection, orderBy("createdAt", "asc"));
+      const querySnapshot = await getDocs(pageQuery);
       const fetchedSections = [];
       querySnapshot.forEach((doc) => {
         fetchedSections.push({ id: doc.id, ...doc.data() });

@@ -16,7 +16,7 @@ import {
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import TableInput from "./Table/TableInput";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { Timestamp, addDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase/config";
 
 const Create = () => {
@@ -94,6 +94,7 @@ const Create = () => {
           type,
           content: testData,
           tableStyle,
+          createdAt: Timestamp.fromDate(new Date()),
         })
           .then(() => {
             toast({
