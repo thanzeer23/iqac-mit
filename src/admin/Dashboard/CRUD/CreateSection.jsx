@@ -8,11 +8,13 @@ const CreateSection = () => {
   const [sections, setSections] = useState("");
   const toast = useToast();
   const saveSection = async () => {
+    const timestamp = Timestamp.fromDate(new Date());
+    console.log(timestamp);
     if (sections) {
       try {
         const docRef = await addDoc(collection(db, "sections"), {
           sections,
-          createdAt: Timestamp.fromDate(new Date()),
+          createdAt: timestamp,
         }).then(() => {
           setSections("");
           toast({

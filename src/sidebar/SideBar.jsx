@@ -86,6 +86,7 @@ const SideBar = ({ user }) => {
           const sectionPageData = pageData.filter(
             (data) => data.section === id
           );
+          console.log(sectionPageData);
 
           return (
             <AccordionItem key={id}>
